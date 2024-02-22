@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import Navigation from "../components/Navigation";
 import { InsertContext } from "../interface/InsertContext";
+import Footer from "../components/Footer";
 
 export default function Update() {
   
@@ -49,6 +50,7 @@ export default function Update() {
     <InsertContext.Provider value={val}>
       <Navigation/>
       <Form isInsert={false}/>
+      <Footer/>
     </InsertContext.Provider>
   )
 }

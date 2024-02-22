@@ -1,4 +1,5 @@
 import CardList from "../components/CardList";
+import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 
 export default function List() {
@@ -6,6 +7,7 @@ export default function List() {
     <div>
       <Navigation/>
       <CardList/>
+      <Footer/>
     </div>
   )
 }

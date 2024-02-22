@@ -24,11 +24,11 @@ function InsertForm(){
         <CustomInput type="text" placeholder="address" setter={prop.setAddress!}/>
         <CustomInput type="number" placeholder="price" setter={prop.setPrice!}/>
   
-        <input type="file" className="file-input file-input-bordered w-full max-w-xs" />
+        <input type="file" className="file-input file-input-bordered w-full max-w-xs" onChange={e => prop.setProfile!(e.target.files![0])} />
         
-        <textarea className="textarea textarea-bordered" placeholder="description"></textarea>
+        <textarea className="textarea textarea-bordered" placeholder="description" onChange={e => prop.setDescription!(e.target.value)}></textarea>
         
-        <button className="btn btn-neutral">Insert</button>
+        <button className="btn btn-neutral" onClick={prop.handleInsert!}>Insert</button>
   
       </div>
     </div>
