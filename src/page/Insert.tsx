@@ -54,6 +54,8 @@ export default function Insert() {
     await InsertController(val)
   }
 
+  console.log(navbarChildInput)
+
   return (
     <InsertContext.Provider value={val}>
       <Navigation/>
