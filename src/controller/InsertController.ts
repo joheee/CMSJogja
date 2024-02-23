@@ -15,7 +15,7 @@ export default async function InsertController(prop:InsertContextInterface) {
 
         console.log(prop)
 
-        const stringRef = `${prop.navbarInput}/${prop.navbarChildInput}/Item`
+        const stringRef = `${prop.navbarInput}/${prop.navbarChildInput}/Activity`
 
         // UPLOAD DATA TO STORAGE
         const storageRef = ref(storage, `${stringRef}/${prop.profile?.name}`)
