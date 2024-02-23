@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react"
 import Form from "../components/Form"
 import Navigation from "../components/Navigation"
-import { InsertContext } from "../interface/InsertContext"
 import Footer from "../components/Footer"
 import InsertController from "../controller/InsertController"
 import toast from "react-hot-toast"
 import Loading from "../components/Loading"
+import { useParams } from "react-router-dom"
+import { FormContext } from "../interface/FormContext"
 
 export default function Update() {
   const navbarChildDic: { [key: string]: string[] } = {
     'placesToGo': ['Accommodation','Cuisine','Culture','Landmark','Nature'],
     'thingsToDo': ['Indoor','Outdoor'],
   }
+
+// PARAM
+  const {id} = useParams()
 
   // LOADING ANIMATION
   const [loading, setLoading] = useState(false)
@@ -98,11 +102,11 @@ export default function Update() {
   }
 
   return (
-    <InsertContext.Provider value={val}>
+    <FormContext.Provider value={val}>
       {loading ? <Loading/> : null}
       <Navigation/>
-      <Form isInsert={true}/>
+      <Form isInsert={false}/>
       <Footer/>
-    </InsertContext.Provider>
+    </FormContext.Provider>
   )
 }

@@ -1,9 +1,9 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db, storage } from "../interface/Firebase";
 import { ref, uploadBytesResumable } from "firebase/storage";
-import { InsertContextInterface } from "../interface/interface";
+import { FormContextInterface } from "../interface/interface";
 
-export default async function InsertController(prop:InsertContextInterface) {
+export default async function InsertController(prop:FormContextInterface) {
     try {
         const data = {
             name:prop.name,

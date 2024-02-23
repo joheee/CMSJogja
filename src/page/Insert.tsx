@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import Form from "../components/Form"
 import Navigation from "../components/Navigation"
-import { InsertContext } from "../interface/InsertContext"
 import Footer from "../components/Footer"
 import InsertController from "../controller/InsertController"
 import toast from "react-hot-toast"
 import Loading from "../components/Loading"
 import { useNavigate } from "react-router-dom"
+import { FormContext } from "../interface/FormContext"
 
 export default function Insert() {
   const navbarChildDic: { [key: string]: string[] } = {
@@ -103,11 +103,11 @@ export default function Insert() {
   }
 
   return (
-    <InsertContext.Provider value={val}>
+    <FormContext.Provider value={val}>
       {loading ? <Loading/> : null}
       <Navigation/>
       <Form isInsert={true}/>
       <Footer/>
-    </InsertContext.Provider>
+    </FormContext.Provider>
   )
 }

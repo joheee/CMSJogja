@@ -1,7 +1,7 @@
 import { createContext } from "react";
-import { InsertContextInterface } from "./interface";
+import { FormContextInterface } from "./interface";
 
-const DefaultInsertState = {
+const DefaultFormState = {
     name:'',
     address:'',
     description:'',
@@ -13,4 +13,4 @@ const DefaultInsertState = {
     navbarChildInput:''
 }
 
-export const InsertContext = createContext<InsertContextInterface>(DefaultInsertState)
+export const FormContext = createContext<FormContextInterface>(DefaultFormState)

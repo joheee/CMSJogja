@@ -35,7 +35,7 @@ export interface ListContextInterface {
     handleRefresh?:()=>void
 }
 
-export interface InsertContextInterface {
+export interface FormContextInterface {
     name:string, 
     setName?:(e:string)=>void,
     address:string, 
