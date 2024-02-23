@@ -24,7 +24,7 @@ export default async function InsertController(prop:InsertContextInterface) {
         // SAVE DATA TO FIRESTORE
         const dataRef = collection(db, stringRef)
         await addDoc(dataRef, {
-            data
+            ...data
         }).then(e => console.log(e.id))
 
     } catch (error) {
