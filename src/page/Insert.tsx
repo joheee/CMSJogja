@@ -56,10 +56,10 @@ export default function Insert() {
     setProfile,
     navbarChildInput,
     setNavbarChildInput,
-    handleInsert
+    handleSubmit
   }
 
-  async function handleInsert() {
+  async function handleSubmit() {
     if (name === null || name === '') {
       toast.error('Name cannot be empty')
       return 

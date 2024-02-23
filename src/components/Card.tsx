@@ -30,7 +30,7 @@ export default function Card(prop: DataInterface) {
         <p className="text-sm text-gray-700 mb-2">Category: {prop.navbar}</p>
         <p className="text-sm text-gray-700 mb-4">Subcategory: {prop.navbarChild}</p>
         <div className="flex justify-between">
-          <Link to={`/update/${prop.id}`} className="btn btn-accent">Update</Link>
+          <Link to={`/update/${prop.navbar}/${prop.navbarChild}/${prop.id}`} className="btn btn-accent">Update</Link>
           <button className="btn btn-error" onClick={handleDelete}>Delete</button>
         </div>
       </div>

@@ -13,8 +13,6 @@ export default async function InsertController(prop:FormContextInterface) {
             profile:prop.profile?.name
         }
 
-        console.log(prop)
-
         const stringRef = `${prop.navbarInput}/${prop.navbarChildInput}/Activity`
 
         // UPLOAD DATA TO STORAGE
@@ -25,7 +23,7 @@ export default async function InsertController(prop:FormContextInterface) {
         const dataRef = collection(db, stringRef)
         await addDoc(dataRef, {
             ...data
-        }).then(e => console.log(e.id))
+        })
 
     } catch (error) {
         console.error(`error insert: ${error}`)

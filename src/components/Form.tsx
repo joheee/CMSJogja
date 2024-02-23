@@ -6,11 +6,11 @@ import { FormContext } from "../interface/FormContext";
 
 export default function Form(prop:FormInterface) {
   if(prop.isInsert) return <InsertForm/>
-  return <UpdarteForm/>
+  return <UpdateForm/>
 }
 
 function InsertForm(){
-  const propContext = useContext(FormContext)
+  const formContext = useContext(FormContext)
   
   return (
     <div className="flex flex-col items-center">
@@ -18,25 +18,25 @@ function InsertForm(){
   
       <div className="p-5 grid grid-cols-2 justify-center gap-5 max-w-2xl">
         
-        <CustomSelect option={propContext.navbar} setter={propContext.setNavbarInput!}/>
-        <CustomSelect option={propContext.navbarChild} setter={propContext.setNavbarChildInput!}/>    
-        <CustomInput type="text" placeholder="name" setter={propContext.setName!}/>
-        <CustomInput type="text" placeholder="address" setter={propContext.setAddress!}/>
-        <CustomInput type="number" placeholder="price" setter={propContext.setPrice!}/>
+        <CustomSelect option={formContext.navbar} setter={formContext.setNavbarInput!}/>
+        <CustomSelect option={formContext.navbarChild} setter={formContext.setNavbarChildInput!}/>    
+        <CustomInput value={formContext.name} type="text" placeholder="name" setter={formContext.setName!}/>
+        <CustomInput value={formContext.address} type="text" placeholder="address" setter={formContext.setAddress!}/>
+        <CustomInput value={formContext.price} type="number" placeholder="price" setter={formContext.setPrice!}/>
   
-        <input type="file" className="file-input file-input-bordered w-full max-w-xs" onChange={e => propContext.setProfile!(e.target.files![0])} />
+        <input type="file" className="file-input file-input-bordered w-full max-w-xs" onChange={e => formContext.setProfile!(e.target.files![0])} />
         
-        <textarea className="textarea textarea-bordered" placeholder="description" onChange={e => propContext.setDescription!(e.target.value)}></textarea>
+        <textarea className="textarea textarea-bordered" placeholder="description" onChange={e => formContext.setDescription!(e.target.value)}></textarea>
         
-        <button className="btn btn-neutral" onClick={propContext.handleInsert!}>Insert</button>
+        <button className="btn btn-neutral" onClick={formContext.handleSubmit!}>Insert</button>
   
       </div>
     </div>
   )
 }
 
-function UpdarteForm(){
-  const propContext = useContext(FormContext)
+function UpdateForm(){
+  const formContext = useContext(FormContext)
   
   return (
     <div className="flex flex-col items-center">
@@ -44,17 +44,17 @@ function UpdarteForm(){
   
       <div className="p-5 grid grid-cols-2 justify-center gap-5 max-w-2xl">
         
-        <CustomSelect option={propContext.navbar} setter={propContext.setNavbarInput!}/>
-        <CustomSelect option={propContext.navbarChild} setter={propContext.setNavbarChildInput!}/>    
-        <CustomInput type="text" placeholder="name" setter={propContext.setName!}/>
-        <CustomInput type="text" placeholder="address" setter={propContext.setAddress!}/>
-        <CustomInput type="number" placeholder="price" setter={propContext.setPrice!}/>
+        <CustomInput disabled value={formContext.navbarInput} type="text" placeholder="Navigation" setter={formContext.setNavbarInput!}/>
+        <CustomInput disabled value={formContext.navbarChildInput} type="text" placeholder="Navigation Child" setter={formContext.setNavbarChildInput!}/>
+        <CustomInput value={formContext.name} type="text" placeholder="name" setter={formContext.setName!}/>
+        <CustomInput value={formContext.address} type="text" placeholder="address" setter={formContext.setAddress!}/>
+        <CustomInput value={formContext.price} type="number" placeholder="price" setter={formContext.setPrice!}/>
   
-        <input type="file" className="file-input file-input-bordered w-full max-w-xs" onChange={e => propContext.setProfile!(e.target.files![0])} />
+        <input type="file" className="file-input file-input-bordered w-full max-w-xs" onChange={e => formContext.setProfile!(e.target.files![0])} />
         
-        <textarea className="textarea textarea-bordered" placeholder="description" onChange={e => propContext.setDescription!(e.target.value)}></textarea>
+        <textarea value={formContext.description} className="textarea textarea-bordered" placeholder="description" onChange={e => formContext.setDescription!(e.target.value)}></textarea>
         
-        <button className="btn btn-neutral" onClick={propContext.handleInsert!}>update</button>
+        <button className="btn btn-neutral" onClick={formContext.handleSubmit!}>update</button>
   
       </div>
     </div>

@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <Insert/>,
   },
   {
-    path: '/update/:id',
+    path: '/update/:nav/:navChild/:id',
     element: <Update/>
   }
 ]);

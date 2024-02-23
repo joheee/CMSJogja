@@ -2,36 +2,54 @@ import { useEffect, useState } from "react"
 import Form from "../components/Form"
 import Navigation from "../components/Navigation"
 import Footer from "../components/Footer"
-import InsertController from "../controller/InsertController"
 import toast from "react-hot-toast"
 import Loading from "../components/Loading"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { FormContext } from "../interface/FormContext"
+import useGetDetails from "../hooks/useGetDetails"
+import UpdateController from "../controller/UpdateController"
 
 export default function Update() {
   const navbarChildDic: { [key: string]: string[] } = {
     'placesToGo': ['Accommodation','Cuisine','Culture','Landmark','Nature'],
     'thingsToDo': ['Indoor','Outdoor'],
   }
+  
+  // NAVIGATE
+  const navigate = useNavigate()
 
-// PARAM
-  const {id} = useParams()
+  // PARAM
+  const {id, nav, navChild} = useParams()
+
+  // GET DETAIL DATA
+  const {data} = useGetDetails({id:id!, nav:nav!, navChild:navChild!})
+
+  console.log(data)
 
   // LOADING ANIMATION
   const [loading, setLoading] = useState(false)
 
   // FOR NAVBAR SECTION
   const navbar = ['placesToGo','thingsToDo']
-  const [navbarChild, setNavbarChild] = useState(navbarChildDic[navbar[0]])
+  const [navbarChild, setNavbarChild] = useState(navbarChildDic[nav!])
 
   // FOR INPUT SECTION
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
-  const [navbarInput, setNavbarInput] = useState(navbar[0])
   const [profile, setProfile] = useState<File|null>(null)
-  const [navbarChildInput, setNavbarChildInput] = useState(navbarChildDic[navbar[0]][0])
+  const [navbarInput, setNavbarInput] = useState(nav!)
+  const [navbarChildInput, setNavbarChildInput] = useState(navChild!)
+
+  useEffect(() => {
+    setName(data?.name!)
+    setAddress(data?.address!)
+    setPrice(data?.price!)
+    setDescription(data?.description!)
+    setNavbarInput(nav!)
+    setNavbarChildInput(navChild!)
+  },[data])
 
   // FOR RESET NAVBAR SECTION
   useEffect(() => {
@@ -56,10 +74,11 @@ export default function Update() {
     setProfile,
     navbarChildInput,
     setNavbarChildInput,
-    handleInsert
+    handleSubmit,
+    id
   }
 
-  async function handleInsert() {
+  async function handleSubmit() {
     if (name === null || name === '') {
       toast.error('Name cannot be empty')
       return 
@@ -80,10 +99,6 @@ export default function Update() {
       toast.error('Navbar input cannot be empty')
       return 
     }
-    if (profile === null) {
-      toast.error('Profile cannot be empty')
-      return 
-    }
     if (navbarChildInput === null) {
       toast.error('Navbar child input cannot be empty')
       return 
@@ -91,13 +106,14 @@ export default function Update() {
   
     try {
       setLoading(true)
-      await InsertController(val).then(() => {
-        toast.success('success insert new item')
+      await UpdateController(val).then(() => {
+        toast.success('success update item')
         setLoading(false)
+        navigate('/')
       })
     } catch (error) {
-      console.error('Error during insertion:', error)
-      toast.error('Error occurred during insertion')
+      console.error('Error during update:', error)
+      toast.error('Error occurred during update')
     }
   }
 

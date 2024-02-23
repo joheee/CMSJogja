@@ -1,13 +1,8 @@
 import { collection, getDocs, onSnapshot } from "firebase/firestore"
-import { db, storage } from "../interface/Firebase"
+import { db } from "../interface/Firebase"
 import { useState, useEffect } from "react"
 import { DataInterface } from "../interface/interface"
-import { getDownloadURL, ref } from "firebase/storage"
-
-async function getImage(location:string) {
-    const ImageURL = await getDownloadURL(ref(storage, location))
-    return await ImageURL
-  }
+import getImageURL from "./getImageURL"
 
 export default function useGetData() {
 
@@ -31,7 +26,7 @@ export default function useGetData() {
         
                 await Promise.all(subColSnapshot.docs.map(async item => {
                     const storageLoc = `placesToGo/${doc.id}/Activity/${item.data().profile}`
-                    const imageUrl = await getImage(storageLoc)
+                    const imageUrl = await getImageURL(storageLoc)
                     const data = { 
                         ...item.data(), 
                         id: item.id, 
@@ -56,7 +51,7 @@ export default function useGetData() {
         
                 await Promise.all(subColSnapshot.docs.map(async item => {
                     const storageLoc = `thingsToDo/${doc.id}/Activity/${item.data().profile}`
-                    const imageUrl = await getImage(storageLoc)
+                    const imageUrl = await getImageURL(storageLoc)
                     const data = { 
                         ...item.data(), 
                         id: item.id, 

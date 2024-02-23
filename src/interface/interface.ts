@@ -7,6 +7,8 @@ export interface FormInterface {
 export interface CustomInputInterface {
     type:HTMLInputTypeAttribute,
     placeholder:string,
+    value?:any,
+    disabled?:boolean,
     setter:(e:any)=>void
 }
 
@@ -52,5 +54,12 @@ export interface FormContextInterface {
     setProfile?:(e:File)=>void,
     navbarChildInput:string, 
     setNavbarChildInput?:(e:string)=>void,
-    handleInsert?:()=>void
+    handleSubmit?:()=>void,
+    id?:string
+}
+
+export interface DetailInterface {
+    id:string,
+    nav:string,
+    navChild:string
 }
