@@ -1,13 +1,13 @@
+import { CardListInterface } from "../interface/interface";
 import Card from "./Card";
 
-export default function CardList() {
-  const list = [1, 2, 3, 4, 5];
+export default function CardList(prop:CardListInterface) {
 
   return (
     <div className="flex justify-center">
-      <div className="p-5 md:p-20 gap-5 grid grid-cols-1 md:grid-cols-3">
-        {list.map((i) => (
-          <Card key={i} />
+      <div className="p-5 md:pb-20 md:pt-5 gap-5 grid grid-cols-1 md:grid-cols-3">
+        {prop.cardList.map((item,i) => (
+          <Card key={i} {...item} />
         ))}
       </div>
     </div>

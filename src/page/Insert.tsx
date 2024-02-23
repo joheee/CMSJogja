@@ -6,12 +6,16 @@ import Footer from "../components/Footer"
 import InsertController from "../controller/InsertController"
 import toast from "react-hot-toast"
 import Loading from "../components/Loading"
+import { useNavigate } from "react-router-dom"
 
 export default function Insert() {
   const navbarChildDic: { [key: string]: string[] } = {
     'placesToGo': ['Accommodation','Cuisine','Culture','Landmark','Nature'],
     'thingsToDo': ['Indoor','Outdoor'],
   }
+
+  // NAVIGATE
+  const navigate = useNavigate()
 
   // LOADING ANIMATION
   const [loading, setLoading] = useState(false)
@@ -90,6 +94,7 @@ export default function Insert() {
       await InsertController(val).then(() => {
         toast.success('success insert new item')
         setLoading(false)
+        navigate('/')
       })
     } catch (error) {
       console.error('Error during insertion:', error)

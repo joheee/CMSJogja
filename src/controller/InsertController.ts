@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
-import { InsertContextInterface } from "../interface/InsertContext";
 import { db, storage } from "../interface/Firebase";
 import { ref, uploadBytesResumable } from "firebase/storage";
+import { InsertContextInterface } from "../interface/interface";
 
 export default async function InsertController(prop:InsertContextInterface) {
     try {
