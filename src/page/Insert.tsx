@@ -5,12 +5,16 @@ import { InsertContext } from "../interface/InsertContext"
 import Footer from "../components/Footer"
 import InsertController from "../controller/InsertController"
 import toast from "react-hot-toast"
+import Loading from "../components/Loading"
 
 export default function Insert() {
   const navbarChildDic: { [key: string]: string[] } = {
     'placesToGo': ['Accommodation','Cuisine','Culture','Landmark','Nature'],
     'thingsToDo': ['Indoor','Outdoor'],
   }
+
+  // LOADING ANIMATION
+  const [loading, setLoading] = useState(false)
 
   // FOR NAVBAR SECTION
   const navbar = ['placesToGo','thingsToDo']
@@ -82,8 +86,10 @@ export default function Insert() {
     }
   
     try {
+      setLoading(true)
       await InsertController(val).then(() => {
         toast.success('success insert new item')
+        setLoading(false)
       })
     } catch (error) {
       console.error('Error during insertion:', error)
@@ -91,10 +97,9 @@ export default function Insert() {
     }
   }
 
-  console.log(navbarChildInput)
-
   return (
     <InsertContext.Provider value={val}>
+      {loading ? <Loading/> : null}
       <Navigation/>
       <Form isInsert={true}/>
       <Footer/>
