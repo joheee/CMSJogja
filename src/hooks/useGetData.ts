@@ -65,7 +65,6 @@ export default function useGetData() {
             setThings(thingsData)
         })
 
-
         return () => {
             unsubscribePlaces()
         }
