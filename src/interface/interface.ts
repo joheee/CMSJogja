@@ -67,4 +67,9 @@ export interface DetailInterface {
 export interface PopUpDescInterface {
     desc: string
     handlePopUp: () => void
-  }
+}
+
+export interface PopUpDeleteInterface {
+    handlePopUp: () => void
+    handleDelete: () => void
+}
