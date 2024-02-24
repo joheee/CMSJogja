@@ -7,7 +7,7 @@ export function PopUpDesc(prop: PopUpDescInterface) {
   return (
     <>
       <div onClick={prop.handlePopUp} className="z-20 fixed inset-0 bg-gray-900 bg-opacity-50"></div>
-      <div className="m-5 z-30 fixed inset-0 bg-white p-8 rounded-lg shadow-lg">
+      <div className="overflow-y-auto m-5 z-30 fixed inset-0 bg-white p-8 rounded-lg shadow-lg">
         <button
           className="absolute top-0 right-0 p-2 text-gray-500 hover:text-gray-700"
           onClick={prop.handlePopUp}
@@ -28,7 +28,6 @@ export function PopUpDesc(prop: PopUpDescInterface) {
             />
           </svg>
         </button>
-        {/* Popup content */}
         <div className="">{prop.desc}</div>
       </div>
     </>
