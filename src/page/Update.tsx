@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { FormContext } from "../interface/FormContext"
 import useGetDetails from "../hooks/useGetDetails"
 import UpdateController from "../controller/UpdateController"
+import FormatUpdateDescription from "../controller/FormatUpdateDescription"
 
 export default function Update() {
   const navbarChildDic: { [key: string]: string[] } = {
@@ -46,7 +47,7 @@ export default function Update() {
     setName(data?.name!)
     setAddress(data?.address!)
     setPrice(data?.price!)
-    setDescription(data?.description!)
+    setDescription(FormatUpdateDescription(data?.description!))
     setNavbarInput(nav!)
     setNavbarChildInput(navChild!)
   },[data])
