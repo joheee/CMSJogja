@@ -1,3 +1,5 @@
+import FormatDescription from "./FormatDescription";
+
 interface PopUpDescInterface {
   desc: string;
   handlePopUp: () => void; 
@@ -28,7 +30,7 @@ export function PopUpDesc(prop: PopUpDescInterface) {
             />
           </svg>
         </button>
-        <div className="">{prop.desc}</div>
+        <FormatDescription desc={prop.desc}/>
       </div>
     </>
   );
