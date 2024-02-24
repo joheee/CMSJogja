@@ -83,10 +83,6 @@ export default function Update() {
       toast.error('Name cannot be empty')
       return 
     }
-    if (address === null || address === '') {
-      toast.error('Address cannot be empty')
-      return 
-    }
     if (description === null || description === '') {
       toast.error('Description cannot be empty')
       return 
