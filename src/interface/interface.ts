@@ -63,3 +63,8 @@ export interface DetailInterface {
     nav:string,
     navChild:string
 }
+
+export interface PopUpDescInterface {
+    desc: string
+    handlePopUp: () => void
+  }
