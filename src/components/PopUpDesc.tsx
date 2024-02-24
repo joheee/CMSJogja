@@ -5,8 +5,9 @@ interface PopUpDescInterface {
 
 export function PopUpDesc(prop: PopUpDescInterface) {
   return (
-    <div className="z-20 fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-      <div className="relative bg-white p-8 rounded-lg shadow-lg max-w-96">
+    <>
+      <div onClick={prop.handlePopUp} className="z-20 fixed inset-0 bg-gray-900 bg-opacity-50"></div>
+      <div className="z-30 fixed bg-white p-8 rounded-lg shadow-lg m-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <button
           className="absolute top-0 right-0 p-2 text-gray-500 hover:text-gray-700"
           onClick={prop.handlePopUp}
@@ -30,6 +31,6 @@ export function PopUpDesc(prop: PopUpDescInterface) {
         {/* Popup content */}
         <div className="">{prop.desc}</div>
       </div>
-    </div>
+    </>
   );
 }
