@@ -27,7 +27,7 @@ function InsertForm(){
         <input type="file" className="file-input file-input-bordered w-full max-w-xs" onChange={e => formContext.setProfile!(e.target.files![0])} />
         
         <textarea className="textarea textarea-bordered" placeholder="description" onChange={e => formContext.setDescription!(e.target.value)}></textarea>
-        
+
         <button className="btn btn-neutral" onClick={formContext.handleSubmit!}>Insert</button>
   
       </div>

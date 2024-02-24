@@ -2,6 +2,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db, storage } from "../interface/Firebase";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { FormContextInterface } from "../interface/interface";
+import BreakDescription from "./BreakDescription";
 
 export default async function UpdateController(prop:FormContextInterface) {
     try {
@@ -9,7 +10,7 @@ export default async function UpdateController(prop:FormContextInterface) {
             const data = {
                 name:prop.name,
                 address:prop.address,
-                description:prop.description,
+                description:BreakDescription(prop.description),
                 price:prop.price,
             }
     
@@ -24,7 +25,7 @@ export default async function UpdateController(prop:FormContextInterface) {
             const data = {
                 name:prop.name,
                 address:prop.address,
-                description:prop.description,
+                description:BreakDescription(prop.description),
                 price:prop.price,
                 profile:prop.profile?.name
             }

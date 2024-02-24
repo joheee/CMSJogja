@@ -27,7 +27,7 @@ export default function Insert() {
   // FOR INPUT SECTION
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
-  const [description, setDescription] = useState('')
+  const [description, setDescription] = useState<string>('')
   const [price, setPrice] = useState(0)
   const [navbarInput, setNavbarInput] = useState(navbar[0])
   const [profile, setProfile] = useState<File|null>(null)
